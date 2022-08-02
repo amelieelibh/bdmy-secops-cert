@@ -5,6 +5,14 @@
   "main": "index.js",
   "author": "team10BDMY",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn hardhat compile",
+    "build:force": "yarn hardhat compile --force",
+    "start:hardhat": "yarn hardhat node --watch",
+    "deploy:rinkeby": "yarn hardhat --network rinkeby deploy",
+    "console:local": "yarn hardhat console --network localhost",
+    "test": "hardhat test"
+  },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
