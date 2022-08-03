@@ -2,6 +2,12 @@
 pragma solidity ^0.8.9;
 
 
+import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+
+
 struct Medic{
     address addr;
     string name;
@@ -26,7 +32,7 @@ interface MedicsBook{
     function existMedic(address _medic) external view returns (bool);
 }
 
-contract MedicineSupply{
+contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable, OwnableUpgradeable{
 
     address owner;
 
