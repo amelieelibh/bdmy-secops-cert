@@ -6,7 +6,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-
+// import "hardhat/console.sol";
 
 struct Medic{
     address addr;
@@ -26,7 +26,9 @@ contract MedicsBook is Initializable, ERC721Upgradeable, PausableUpgradeable, Ow
         _;
     }
 
-    constructor() {
+    constructor(){}
+    
+    function initialize() public initializer{
     }
     
     function addMedic(string memory _name, string memory _url) public {
@@ -52,15 +54,24 @@ contract MedicsBook is Initializable, ERC721Upgradeable, PausableUpgradeable, Ow
     }
     
     function getDoctors(uint page, uint size) public view returns (address[] memory) {
+        require(page > 0, "Page must be greater than 0");
+        require(size > 0, "Size must be greater than 0");
         uint totalMedics = getDoctorsCount();
-        address[] memory result = new address[](size < totalMedics ? size : totalMedics);
-        if(page * size > totalMedics) {
+        uint firstIndex = (page - 1) * size;
+        require(firstIndex < totalMedics, "Page out of range");
+        uint nextLast = page * size;
+        uint lastIndex = nextLast < totalMedics ? nextLast : totalMedics;
+        require(firstIndex < lastIndex, "Page out of range");
+        uint maxSize = lastIndex - firstIndex;
+        address[] memory result = new address[](maxSize);
+        // console.log("indexes", firstIndex, lastIndex, totalMedics);
+        if(lastIndex == firstIndex) {
             return result;
         }
-        uint nextPage = page + 1;
-        uint nextLast = nextPage * size;
-        for (uint i = page * size; i < (nextLast < totalMedics ? nextLast : totalMedics); i++) {
-            result[i] = medicsList[page * size + i];
+        uint j = 0;
+        for (uint i = firstIndex; i < lastIndex; i++) {
+            // console.log("i", i, "j", j);
+            result[j++] = medicsList[i];
         }
         return result;
     }
