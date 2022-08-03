@@ -6,7 +6,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-
+import "hardhat/console.sol";
 
 struct Medic{
     address addr;
@@ -201,11 +201,14 @@ contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable
         prescriptions[prescriptionId].patient = patientAddr;
         prescriptions[prescriptionId].filledStatus = 0x01;
         prescriptions[prescriptionId].timestamp = block.timestamp;
+        // prescriptions[prescriptionId].items = new ItemPrescription[](items.length);
         patientPrescriptions[hospitalAddr][_msgSender()][patientAddr].push(prescriptionId);
         for(uint i = 0; i < items.length; i++){
             ItemPrescription memory item = items[i];
-            prescriptions[prescriptionId].items[i].sku = item.sku;
-            prescriptions[prescriptionId].items[i].quantity = item.quantity;
+            console.log("index itemPrescription", i, "prescriptionId", prescriptionId);
+            // prescriptions[prescriptionId].items[i].sku = item.sku;
+            // prescriptions[prescriptionId].items[i].quantity = item.quantity;
+            prescriptions[prescriptionId].items.push(item);
             if(medicines[hospitalAddr][item.sku].quantity == 0) {
                 emit EmptyMedicine(hospitalAddr, item.sku, medicines[hospitalAddr][item.sku].name);
             }

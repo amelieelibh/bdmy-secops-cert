@@ -357,6 +357,81 @@ describe("MedicineSupply", function () {
 
   });
 
+
+  describe("Managing Medicines of Hospitals", function (){
+    let fixture: {
+      medicineSupply: MedicineSupply;
+      medicsBook: MedicsBook;
+      owner: SignerWithAddress;
+      hospital1: SignerWithAddress;
+      hospital2: SignerWithAddress;
+      medic1: SignerWithAddress;
+      medic2: SignerWithAddress;
+      medic3: SignerWithAddress;
+      patient1: SignerWithAddress;
+      patient2: SignerWithAddress;
+      patient3: SignerWithAddress;
+      patient4: SignerWithAddress;
+    };
+    before(async () => {
+      fixture = await loadFixture(deployOneYearLockFixture);
+      const { medicineSupply, medicsBook, owner, hospital1, hospital2, medic1, medic2, medic3 } = fixture;
+      await medicineSupply.connect(owner).addHospital(hospital1.address, "Hospital 1", "https://hospital1.com");
+      await medicineSupply.connect(owner).addHospital(hospital2.address, "Hospital 2", "https://hospital2.com");
+      await medicsBook.connect(medic1).addMedic("Juan Perez", "https://drjuanperez.com");
+      await medicsBook.connect(medic2).addMedic("Ana Hernandez", "https://dranahernandez.org");
+      // await medicsBook.connect(medic3).addMedic("Ale Vale", "https://myhospital.com/alevale");
+      await medicineSupply.connect(hospital1).addMedic(medic1.address);
+      await medicineSupply.connect(hospital1).addMedic(medic2.address);
+      await medicineSupply.connect(hospital2).addMedic(medic2.address);
+      const medicine1 = "paracetamol";
+      const sku1 = ethers.utils.formatBytes32String(medicine1);
+      const medicine1Price = 100;
+      const qty1 = 500;
+      const medicine2 = "omeprazol";
+      const sku2 = ethers.utils.formatBytes32String(medicine2);
+      const medicine2Price = 200;
+      const qty2 = 1000;
+      const medicine3 = "ibuprofeno";
+      const sku3 = ethers.utils.formatBytes32String(medicine3);
+      const medicine3Price = 300;
+      const qty3 = 5;
+      await medicineSupply.connect(hospital1).registerMedicine(sku1, medicine1, medicine1Price);
+      await medicineSupply.connect(hospital1).registerMedicine(sku2, medicine2, medicine2Price);
+      // await medicineSupply.connect(hospital2).registerMedicine(sku2, medicine2, medicine2Price);
+      // await medicineSupply.connect(hospital2).registerMedicine(sku3, medicine3, medicine3Price);
+      await medicineSupply.connect(hospital1).addMedicines([sku1, sku2], [qty1, qty2]);
+      // await medicineSupply.connect(hospital2).addMedicines([sku2, sku3], [qty2, qty3]);
+    });
+  
+    it("medic1 in hospital1 should be able to create a new prescription to patient1", async () => {
+      const { medicineSupply, hospital1, medic1, patient1 } = fixture;
+      const medicine1Name = "paracetamol";
+      const sku1 = ethers.utils.formatBytes32String(medicine1Name);
+      const qty1 = 2;
+      const medicine2Name = "omeprazol";
+      const sku2 = ethers.utils.formatBytes32String(medicine2Name);
+      const qty2 = 3;
+      const prescription = await medicineSupply.connect(medic1).createPrescription(
+          hospital1.address, patient1.address, [sku1, sku2], [qty1, qty2]);
+      const prescriptionResult = await prescription.wait();
+      expect(prescriptionResult.events?.[0].event).to.be.equal("NewPrescription");
+      expect(prescriptionResult.events?.[0].args?.hospitalAddr).to.be.equal(hospital1.address);
+      expect(prescriptionResult.events?.[0].args?.medicAddr).to.be.equal(medic1.address);
+      expect(prescriptionResult.events?.[0].args?.patientAddr).to.be.equal(patient1.address);
+      const prescriptionId = prescriptionResult.events?.[0].args?.prescriptionId;
+      expect(prescriptionId).to.be.not.null;
+
+      const prescriptionData = await medicineSupply.prescriptions(prescriptionId);
+      expect(prescriptionData.medic).to.be.equal(medic1.address);
+      expect(prescriptionData.hospital).to.be.equal(hospital1.address);
+      expect(prescriptionData.patient).to.be.equal(patient1.address);
+      // expect(prescriptionData.).to.be.equal(sku);
+      expect(prescriptionData.filledStatus).to.be.equal("0x01");
+      console.log("prescriptionData", prescriptionData);
+    });
+  
+  });
   //   describe("Transfers", function () {
   //     it("Should transfer the funds to the owner", async function () {
   //       const { lock, unlockTime, lockedAmount, owner } = await loadFixture(
