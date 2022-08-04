@@ -1,7 +1,8 @@
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-deploy";
-
+import "@nomiclabs/hardhat-etherscan";
+import '@openzeppelin/hardhat-upgrades';
 
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';

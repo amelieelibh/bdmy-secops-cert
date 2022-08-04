@@ -1,0 +1,414 @@
+{
+  "address": "0xcBc6d5aDa54B059cB2A8Aa40f0d8d4C4034a5012",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "version",
+          "type": "uint8"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "NewMedic",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_url",
+          "type": "string"
+        }
+      ],
+      "name": "addMedic",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_medic",
+          "type": "address"
+        }
+      ],
+      "name": "existMedic",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "page",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "size",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDoctors",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDoctorsCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_medic",
+          "type": "address"
+        }
+      ],
+      "name": "getMedic",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "url",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct Medic",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "medicsList",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_url",
+          "type": "string"
+        }
+      ],
+      "name": "updateMedic",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xcac7bc21835e830d5081a3a913402128c4cc8cfd672bef301f53704003ae4710",
+  "receipt": {
+    "to": null,
+    "from": "0xcaa0a9fB031606f5329376702101304928A84D06",
+    "contractAddress": "0xcBc6d5aDa54B059cB2A8Aa40f0d8d4C4034a5012",
+    "transactionIndex": 6,
+    "gasUsed": "724609",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x239b856933196d8baffc779dba0feba0d929596f46daa90a78e3a538409e9934",
+    "transactionHash": "0xcac7bc21835e830d5081a3a913402128c4cc8cfd672bef301f53704003ae4710",
+    "logs": [],
+    "blockNumber": 11142093,
+    "cumulativeGasUsed": "1553347",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "8106a456f6d29d6660c815e3f4de8f61",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"NewMedic\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_url\",\"type\":\"string\"}],\"name\":\"addMedic\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_medic\",\"type\":\"address\"}],\"name\":\"existMedic\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"page\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"size\",\"type\":\"uint256\"}],\"name\":\"getDoctors\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDoctorsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_medic\",\"type\":\"address\"}],\"name\":\"getMedic\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"}],\"internalType\":\"struct Medic\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"medicsList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_url\",\"type\":\"string\"}],\"name\":\"updateMedic\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"paused()\":{\"details\":\"Returns true if the contract is paused, and false otherwise.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MedicsBook.sol\":\"MedicsBook\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.7.0) (proxy/utils/Initializable.sol)\\n\\npragma solidity ^0.8.2;\\n\\nimport \\\"../../utils/AddressUpgradeable.sol\\\";\\n\\n/**\\n * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed\\n * behind a proxy. Since proxied contracts do not make use of a constructor, it's common to move constructor logic to an\\n * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer\\n * function so it can only be called once. The {initializer} modifier provided by this contract will have this effect.\\n *\\n * The initialization functions use a version number. Once a version number is used, it is consumed and cannot be\\n * reused. This mechanism prevents re-execution of each \\\"step\\\" but allows the creation of new initialization steps in\\n * case an upgrade adds a module that needs to be initialized.\\n *\\n * For example:\\n *\\n * [.hljs-theme-light.nopadding]\\n * ```\\n * contract MyToken is ERC20Upgradeable {\\n *     function initialize() initializer public {\\n *         __ERC20_init(\\\"MyToken\\\", \\\"MTK\\\");\\n *     }\\n * }\\n * contract MyTokenV2 is MyToken, ERC20PermitUpgradeable {\\n *     function initializeV2() reinitializer(2) public {\\n *         __ERC20Permit_init(\\\"MyToken\\\");\\n *     }\\n * }\\n * ```\\n *\\n * TIP: To avoid leaving the proxy in an uninitialized state, the initializer function should be called as early as\\n * possible by providing the encoded function call as the `_data` argument to {ERC1967Proxy-constructor}.\\n *\\n * CAUTION: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or to ensure\\n * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.\\n *\\n * [CAUTION]\\n * ====\\n * Avoid leaving a contract uninitialized.\\n *\\n * An uninitialized contract can be taken over by an attacker. This applies to both a proxy and its implementation\\n * contract, which may impact the proxy. To prevent the implementation contract from being used, you should invoke\\n * the {_disableInitializers} function in the constructor to automatically lock it when it is deployed:\\n *\\n * [.hljs-theme-light.nopadding]\\n * ```\\n * /// @custom:oz-upgrades-unsafe-allow constructor\\n * constructor() {\\n *     _disableInitializers();\\n * }\\n * ```\\n * ====\\n */\\nabstract contract Initializable {\\n    /**\\n     * @dev Indicates that the contract has been initialized.\\n     * @custom:oz-retyped-from bool\\n     */\\n    uint8 private _initialized;\\n\\n    /**\\n     * @dev Indicates that the contract is in the process of being initialized.\\n     */\\n    bool private _initializing;\\n\\n    /**\\n     * @dev Triggered when the contract has been initialized or reinitialized.\\n     */\\n    event Initialized(uint8 version);\\n\\n    /**\\n     * @dev A modifier that defines a protected initializer function that can be invoked at most once. In its scope,\\n     * `onlyInitializing` functions can be used to initialize parent contracts. Equivalent to `reinitializer(1)`.\\n     */\\n    modifier initializer() {\\n        bool isTopLevelCall = !_initializing;\\n        require(\\n            (isTopLevelCall && _initialized < 1) || (!AddressUpgradeable.isContract(address(this)) && _initialized == 1),\\n            \\\"Initializable: contract is already initialized\\\"\\n        );\\n        _initialized = 1;\\n        if (isTopLevelCall) {\\n            _initializing = true;\\n        }\\n        _;\\n        if (isTopLevelCall) {\\n            _initializing = false;\\n            emit Initialized(1);\\n        }\\n    }\\n\\n    /**\\n     * @dev A modifier that defines a protected reinitializer function that can be invoked at most once, and only if the\\n     * contract hasn't been initialized to a greater version before. In its scope, `onlyInitializing` functions can be\\n     * used to initialize parent contracts.\\n     *\\n     * `initializer` is equivalent to `reinitializer(1)`, so a reinitializer may be used after the original\\n     * initialization step. This is essential to configure modules that are added through upgrades and that require\\n     * initialization.\\n     *\\n     * Note that versions can jump in increments greater than 1; this implies that if multiple reinitializers coexist in\\n     * a contract, executing them in the right order is up to the developer or operator.\\n     */\\n    modifier reinitializer(uint8 version) {\\n        require(!_initializing && _initialized < version, \\\"Initializable: contract is already initialized\\\");\\n        _initialized = version;\\n        _initializing = true;\\n        _;\\n        _initializing = false;\\n        emit Initialized(version);\\n    }\\n\\n    /**\\n     * @dev Modifier to protect an initialization function so that it can only be invoked by functions with the\\n     * {initializer} and {reinitializer} modifiers, directly or indirectly.\\n     */\\n    modifier onlyInitializing() {\\n        require(_initializing, \\\"Initializable: contract is not initializing\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Locks the contract, preventing any future reinitialization. This cannot be part of an initializer call.\\n     * Calling this in the constructor of a contract will prevent that contract from being initialized or reinitialized\\n     * to any version. It is recommended to use this to lock implementation contracts that are designed to be called\\n     * through proxies.\\n     */\\n    function _disableInitializers() internal virtual {\\n        require(!_initializing, \\\"Initializable: contract is initializing\\\");\\n        if (_initialized < type(uint8).max) {\\n            _initialized = type(uint8).max;\\n            emit Initialized(type(uint8).max);\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x0203dcadc5737d9ef2c211d6fa15d18ebc3b30dfa51903b64870b01a062b0b4e\",\"license\":\"MIT\"},\"@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.7.0) (security/Pausable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/ContextUpgradeable.sol\\\";\\nimport \\\"../proxy/utils/Initializable.sol\\\";\\n\\n/**\\n * @dev Contract module which allows children to implement an emergency stop\\n * mechanism that can be triggered by an authorized account.\\n *\\n * This module is used through inheritance. It will make available the\\n * modifiers `whenNotPaused` and `whenPaused`, which can be applied to\\n * the functions of your contract. Note that they will not be pausable by\\n * simply including this module, only once the modifiers are put in place.\\n */\\nabstract contract PausableUpgradeable is Initializable, ContextUpgradeable {\\n    /**\\n     * @dev Emitted when the pause is triggered by `account`.\\n     */\\n    event Paused(address account);\\n\\n    /**\\n     * @dev Emitted when the pause is lifted by `account`.\\n     */\\n    event Unpaused(address account);\\n\\n    bool private _paused;\\n\\n    /**\\n     * @dev Initializes the contract in unpaused state.\\n     */\\n    function __Pausable_init() internal onlyInitializing {\\n        __Pausable_init_unchained();\\n    }\\n\\n    function __Pausable_init_unchained() internal onlyInitializing {\\n        _paused = false;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is not paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    modifier whenNotPaused() {\\n        _requireNotPaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    modifier whenPaused() {\\n        _requirePaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns true if the contract is paused, and false otherwise.\\n     */\\n    function paused() public view virtual returns (bool) {\\n        return _paused;\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is paused.\\n     */\\n    function _requireNotPaused() internal view virtual {\\n        require(!paused(), \\\"Pausable: paused\\\");\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is not paused.\\n     */\\n    function _requirePaused() internal view virtual {\\n        require(paused(), \\\"Pausable: not paused\\\");\\n    }\\n\\n    /**\\n     * @dev Triggers stopped state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    function _pause() internal virtual whenNotPaused {\\n        _paused = true;\\n        emit Paused(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Returns to normal state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    function _unpause() internal virtual whenPaused {\\n        _paused = false;\\n        emit Unpaused(_msgSender());\\n    }\\n\\n    /**\\n     * @dev This empty reserved space is put in place to allow future versions to add new\\n     * variables without shifting down storage in the inheritance chain.\\n     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps\\n     */\\n    uint256[49] private __gap;\\n}\\n\",\"keccak256\":\"0x40c636b4572ff5f1dc50cf22097e93c0723ee14eff87e99ac2b02636eeca1250\",\"license\":\"MIT\"},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.7.0) (utils/Address.sol)\\n\\npragma solidity ^0.8.1;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary AddressUpgradeable {\\n    /**\\n     * @dev Returns true if `account` is a contract.\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * It is unsafe to assume that an address for which this function returns\\n     * false is an externally-owned account (EOA) and not a contract.\\n     *\\n     * Among others, `isContract` will return false for the following\\n     * types of addresses:\\n     *\\n     *  - an externally-owned account\\n     *  - a contract in construction\\n     *  - an address where a contract will be created\\n     *  - an address where a contract lived, but was destroyed\\n     * ====\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * You shouldn't rely on `isContract` to protect against flash loan attacks!\\n     *\\n     * Preventing calls from contracts is highly discouraged. It breaks composability, breaks support for smart wallets\\n     * like Gnosis Safe, and does not provide security since it can be circumvented by calling from a contract\\n     * constructor.\\n     * ====\\n     */\\n    function isContract(address account) internal view returns (bool) {\\n        // This method relies on extcodesize/address.code.length, which returns 0\\n        // for contracts in construction, since the code is only stored at the end\\n        // of the constructor execution.\\n\\n        return account.code.length > 0;\\n    }\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        require(address(this).balance >= amount, \\\"Address: insufficient balance\\\");\\n\\n        (bool success, ) = recipient.call{value: amount}(\\\"\\\");\\n        require(success, \\\"Address: unable to send value, recipient may have reverted\\\");\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain `call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason, it is bubbled up by this\\n     * function (like regular Solidity function calls).\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionCall(target, data, \\\"Address: low-level call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with\\n     * `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, value, \\\"Address: low-level call with value failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but\\n     * with `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(address(this).balance >= value, \\\"Address: insufficient balance for call\\\");\\n        require(isContract(target), \\\"Address: call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.call{value: value}(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        return functionStaticCall(target, data, \\\"Address: low-level static call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal view returns (bytes memory) {\\n        require(isContract(target), \\\"Address: static call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the\\n     * revert reason using the provided one.\\n     *\\n     * _Available since v4.3._\\n     */\\n    function verifyCallResult(\\n        bool success,\\n        bytes memory returndata,\\n        string memory errorMessage\\n    ) internal pure returns (bytes memory) {\\n        if (success) {\\n            return returndata;\\n        } else {\\n            // Look for revert reason and bubble it up if present\\n            if (returndata.length > 0) {\\n                // The easiest way to bubble the revert reason is using memory via assembly\\n                /// @solidity memory-safe-assembly\\n                assembly {\\n                    let returndata_size := mload(returndata)\\n                    revert(add(32, returndata), returndata_size)\\n                }\\n            } else {\\n                revert(errorMessage);\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x611aa3f23e59cfdd1863c536776407b3e33d695152a266fa7cfb34440a29a8a3\",\"license\":\"MIT\"},\"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\nimport \\\"../proxy/utils/Initializable.sol\\\";\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract ContextUpgradeable is Initializable {\\n    function __Context_init() internal onlyInitializing {\\n    }\\n\\n    function __Context_init_unchained() internal onlyInitializing {\\n    }\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    /**\\n     * @dev This empty reserved space is put in place to allow future versions to add new\\n     * variables without shifting down storage in the inheritance chain.\\n     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps\\n     */\\n    uint256[50] private __gap;\\n}\\n\",\"keccak256\":\"0x963ea7f0b48b032eef72fe3a7582edf78408d6f834115b9feadd673a4d5bd149\",\"license\":\"MIT\"},\"contracts/MedicsBook.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.9;\\n\\n\\nimport \\\"@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol\\\";\\nimport \\\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\\\";\\n// import \\\"hardhat/console.sol\\\";\\n\\nstruct Medic{\\n    address addr;\\n    string name;\\n    string url;\\n}\\n\\n\\ncontract MedicsBook is Initializable, PausableUpgradeable {\\n    mapping(address => Medic) medics;\\n    address[] public medicsList;\\n\\n    event NewMedic(address addr, string name);\\n\\n    modifier onlyMedic() {\\n        require(existMedic(msg.sender), \\\"Only medic can call this function\\\");\\n        _;\\n    }\\n\\n    constructor(){}\\n    \\n    function initialize() public initializer{\\n    }\\n    \\n    function addMedic(string memory _name, string memory _url) public {\\n        medics[msg.sender] = Medic(msg.sender, _name, _url);\\n        medicsList.push(msg.sender);\\n    }\\n\\n    function getMedic(address _medic) public view returns (Medic memory) {\\n        return medics[_medic];\\n    }\\n\\n    function updateMedic(string memory _name, string memory _url) public onlyMedic {\\n        medics[msg.sender].name = _name;\\n        medics[msg.sender].url = _url;\\n    }\\n\\n    function existMedic(address _medic) public view returns (bool) {\\n        return medics[_medic].addr == _medic;\\n    }\\n    \\n    function getDoctorsCount() public view returns (uint256) {\\n        return medicsList.length;\\n    }\\n    \\n    function getDoctors(uint page, uint size) public view returns (address[] memory) {\\n        require(page > 0, \\\"Page must be greater than 0\\\");\\n        require(size > 0, \\\"Size must be greater than 0\\\");\\n        uint totalMedics = getDoctorsCount();\\n        uint firstIndex = (page - 1) * size;\\n        require(firstIndex < totalMedics, \\\"Page out of range\\\");\\n        uint nextLast = page * size;\\n        uint lastIndex = nextLast < totalMedics ? nextLast : totalMedics;\\n        require(firstIndex < lastIndex, \\\"Page out of range\\\");\\n        uint maxSize = lastIndex - firstIndex;\\n        address[] memory result = new address[](maxSize);\\n        // console.log(\\\"indexes\\\", firstIndex, lastIndex, totalMedics);\\n        if(lastIndex == firstIndex) {\\n            return result;\\n        }\\n        uint j = 0;\\n        for (uint i = firstIndex; i < lastIndex; i++) {\\n            // console.log(\\\"i\\\", i, \\\"j\\\", j);\\n            result[j++] = medicsList[i];\\n        }\\n        return result;\\n    }\\n}\",\"keccak256\":\"0x370655d1ab150e7c363d9714170054afacd3a3332a9f329959a4c5b3b96d8244\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610c26806100206000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c80638129fc1c116100665780638129fc1c14610118578063885fe869146101225780639539294114610142578063b39c286114610155578063e3b99f801461016857600080fd5b806331357af21461009857806347fff12f146100ae5780635c975abb146100ed57806379b28f4f146100f8575b600080fd5b6066546040519081526020015b60405180910390f35b6100dd6100bc3660046108d8565b6001600160a01b039081166000818152606560205260409020549091161490565b60405190151581526020016100a5565b60335460ff166100dd565b61010b6101063660046108d8565b610193565b6040516100a59190610955565b61012061031e565b005b6101356101303660046109a9565b61042c565b6040516100a591906109cb565b610120610150366004610abb565b610692565b610120610163366004610abb565b610754565b61017b610176366004610b1f565b610815565b6040516001600160a01b0390911681526020016100a5565b6101c0604051806060016040528060006001600160a01b0316815260200160608152602001606081525090565b6001600160a01b03808316600090815260656020908152604091829020825160608101909352805490931682526001830180549293929184019161020390610b38565b80601f016020809104026020016040519081016040528092919081815260200182805461022f90610b38565b801561027c5780601f106102515761010080835404028352916020019161027c565b820191906000526020600020905b81548152906001019060200180831161025f57829003601f168201915b5050505050815260200160028201805461029590610b38565b80601f01602080910402602001604051908101604052809291908181526020018280546102c190610b38565b801561030e5780601f106102e35761010080835404028352916020019161030e565b820191906000526020600020905b8154815290600101906020018083116102f157829003601f168201915b5050505050815250509050919050565b600054610100900460ff161580801561033e5750600054600160ff909116105b806103585750303b158015610358575060005460ff166001145b6103c05760405162461bcd60e51b815260206004820152602e60248201527f496e697469616c697a61626c653a20636f6e747261637420697320616c72656160448201526d191e481a5b9a5d1a585b1a5e995960921b60648201526084015b60405180910390fd5b6000805460ff1916600117905580156103e3576000805461ff0019166101001790555b8015610429576000805461ff0019169055604051600181527f7f26b83ff96e1f2b6a682f133852f6798a09c465da95921460cefb38474024989060200160405180910390a15b50565b60606000831161047e5760405162461bcd60e51b815260206004820152601b60248201527f50616765206d7573742062652067726561746572207468616e2030000000000060448201526064016103b7565b600082116104ce5760405162461bcd60e51b815260206004820152601b60248201527f53697a65206d7573742062652067726561746572207468616e2030000000000060448201526064016103b7565b60006104d960665490565b90506000836104e9600187610b89565b6104f39190610ba0565b90508181106105385760405162461bcd60e51b815260206004820152601160248201527050616765206f7574206f662072616e676560781b60448201526064016103b7565b60006105448587610ba0565b905060008382106105555783610557565b815b905080831061059c5760405162461bcd60e51b815260206004820152601160248201527050616765206f7574206f662072616e676560781b60448201526064016103b7565b60006105a88483610b89565b905060008167ffffffffffffffff8111156105c5576105c5610a18565b6040519080825280602002602001820160405280156105ee578160200160208202803683370190505b5090508483141561060657955061068c945050505050565b6000855b84811015610681576066818154811061062557610625610bbf565b6000918252602090912001546001600160a01b0316838361064581610bd5565b94508151811061065757610657610bbf565b6001600160a01b03909216602092830291909101909101528061067981610bd5565b91505061060a565b509096505050505050505b92915050565b336000818152606560205260409020546001600160a01b0316146107025760405162461bcd60e51b815260206004820152602160248201527f4f6e6c79206d656469632063616e2063616c6c20746869732066756e6374696f6044820152603760f91b60648201526084016103b7565b33600090815260656020908152604090912083516107289260019092019185019061083f565b50336000908152606560209081526040909120825161074f9260029092019184019061083f565b505050565b6040805160608101825233808252602080830186815283850186905260009283526065825293909120825181546001600160a01b0319166001600160a01b03909116178155925180519293926107b0926001850192019061083f565b50604082015180516107cc91600284019160209091019061083f565b5050606680546001810182556000919091527f46501879b8ca8525e8c2fd519e2fbfcfa2ebea26501294aa02cbfcfb12e943540180546001600160a01b03191633179055505050565b6066818154811061082557600080fd5b6000918252602090912001546001600160a01b0316905081565b82805461084b90610b38565b90600052602060002090601f01602090048101928261086d57600085556108b3565b82601f1061088657805160ff19168380011785556108b3565b828001600101855582156108b3579182015b828111156108b3578251825591602001919060010190610898565b506108bf9291506108c3565b5090565b5b808211156108bf57600081556001016108c4565b6000602082840312156108ea57600080fd5b81356001600160a01b038116811461090157600080fd5b9392505050565b6000815180845260005b8181101561092e57602081850181015186830182015201610912565b81811115610940576000602083870101525b50601f01601f19169290920160200192915050565b602080825282516001600160a01b031682820152820151606060408301526000906109836080840182610908565b90506040840151601f198483030160608501526109a08282610908565b95945050505050565b600080604083850312156109bc57600080fd5b50508035926020909101359150565b6020808252825182820181905260009190848201906040850190845b81811015610a0c5783516001600160a01b0316835292840192918401916001016109e7565b50909695505050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112610a3f57600080fd5b813567ffffffffffffffff80821115610a5a57610a5a610a18565b604051601f8301601f19908116603f01168101908282118183101715610a8257610a82610a18565b81604052838152866020858801011115610a9b57600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060408385031215610ace57600080fd5b823567ffffffffffffffff80821115610ae657600080fd5b610af286838701610a2e565b93506020850135915080821115610b0857600080fd5b50610b1585828601610a2e565b9150509250929050565b600060208284031215610b3157600080fd5b5035919050565b600181811c90821680610b4c57607f821691505b60208210811415610b6d57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b600082821015610b9b57610b9b610b73565b500390565b6000816000190483118215151615610bba57610bba610b73565b500290565b634e487b7160e01b600052603260045260246000fd5b6000600019821415610be957610be9610b73565b506001019056fea26469706673582212208432d7e87afe613f642b70b14df0c52e7f1a22979f121ddbed0709f07d27004d64736f6c63430008090033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100935760003560e01c80638129fc1c116100665780638129fc1c14610118578063885fe869146101225780639539294114610142578063b39c286114610155578063e3b99f801461016857600080fd5b806331357af21461009857806347fff12f146100ae5780635c975abb146100ed57806379b28f4f146100f8575b600080fd5b6066546040519081526020015b60405180910390f35b6100dd6100bc3660046108d8565b6001600160a01b039081166000818152606560205260409020549091161490565b60405190151581526020016100a5565b60335460ff166100dd565b61010b6101063660046108d8565b610193565b6040516100a59190610955565b61012061031e565b005b6101356101303660046109a9565b61042c565b6040516100a591906109cb565b610120610150366004610abb565b610692565b610120610163366004610abb565b610754565b61017b610176366004610b1f565b610815565b6040516001600160a01b0390911681526020016100a5565b6101c0604051806060016040528060006001600160a01b0316815260200160608152602001606081525090565b6001600160a01b03808316600090815260656020908152604091829020825160608101909352805490931682526001830180549293929184019161020390610b38565b80601f016020809104026020016040519081016040528092919081815260200182805461022f90610b38565b801561027c5780601f106102515761010080835404028352916020019161027c565b820191906000526020600020905b81548152906001019060200180831161025f57829003601f168201915b5050505050815260200160028201805461029590610b38565b80601f01602080910402602001604051908101604052809291908181526020018280546102c190610b38565b801561030e5780601f106102e35761010080835404028352916020019161030e565b820191906000526020600020905b8154815290600101906020018083116102f157829003601f168201915b5050505050815250509050919050565b600054610100900460ff161580801561033e5750600054600160ff909116105b806103585750303b158015610358575060005460ff166001145b6103c05760405162461bcd60e51b815260206004820152602e60248201527f496e697469616c697a61626c653a20636f6e747261637420697320616c72656160448201526d191e481a5b9a5d1a585b1a5e995960921b60648201526084015b60405180910390fd5b6000805460ff1916600117905580156103e3576000805461ff0019166101001790555b8015610429576000805461ff0019169055604051600181527f7f26b83ff96e1f2b6a682f133852f6798a09c465da95921460cefb38474024989060200160405180910390a15b50565b60606000831161047e5760405162461bcd60e51b815260206004820152601b60248201527f50616765206d7573742062652067726561746572207468616e2030000000000060448201526064016103b7565b600082116104ce5760405162461bcd60e51b815260206004820152601b60248201527f53697a65206d7573742062652067726561746572207468616e2030000000000060448201526064016103b7565b60006104d960665490565b90506000836104e9600187610b89565b6104f39190610ba0565b90508181106105385760405162461bcd60e51b815260206004820152601160248201527050616765206f7574206f662072616e676560781b60448201526064016103b7565b60006105448587610ba0565b905060008382106105555783610557565b815b905080831061059c5760405162461bcd60e51b815260206004820152601160248201527050616765206f7574206f662072616e676560781b60448201526064016103b7565b60006105a88483610b89565b905060008167ffffffffffffffff8111156105c5576105c5610a18565b6040519080825280602002602001820160405280156105ee578160200160208202803683370190505b5090508483141561060657955061068c945050505050565b6000855b84811015610681576066818154811061062557610625610bbf565b6000918252602090912001546001600160a01b0316838361064581610bd5565b94508151811061065757610657610bbf565b6001600160a01b03909216602092830291909101909101528061067981610bd5565b91505061060a565b509096505050505050505b92915050565b336000818152606560205260409020546001600160a01b0316146107025760405162461bcd60e51b815260206004820152602160248201527f4f6e6c79206d656469632063616e2063616c6c20746869732066756e6374696f6044820152603760f91b60648201526084016103b7565b33600090815260656020908152604090912083516107289260019092019185019061083f565b50336000908152606560209081526040909120825161074f9260029092019184019061083f565b505050565b6040805160608101825233808252602080830186815283850186905260009283526065825293909120825181546001600160a01b0319166001600160a01b03909116178155925180519293926107b0926001850192019061083f565b50604082015180516107cc91600284019160209091019061083f565b5050606680546001810182556000919091527f46501879b8ca8525e8c2fd519e2fbfcfa2ebea26501294aa02cbfcfb12e943540180546001600160a01b03191633179055505050565b6066818154811061082557600080fd5b6000918252602090912001546001600160a01b0316905081565b82805461084b90610b38565b90600052602060002090601f01602090048101928261086d57600085556108b3565b82601f1061088657805160ff19168380011785556108b3565b828001600101855582156108b3579182015b828111156108b3578251825591602001919060010190610898565b506108bf9291506108c3565b5090565b5b808211156108bf57600081556001016108c4565b6000602082840312156108ea57600080fd5b81356001600160a01b038116811461090157600080fd5b9392505050565b6000815180845260005b8181101561092e57602081850181015186830182015201610912565b81811115610940576000602083870101525b50601f01601f19169290920160200192915050565b602080825282516001600160a01b031682820152820151606060408301526000906109836080840182610908565b90506040840151601f198483030160608501526109a08282610908565b95945050505050565b600080604083850312156109bc57600080fd5b50508035926020909101359150565b6020808252825182820181905260009190848201906040850190845b81811015610a0c5783516001600160a01b0316835292840192918401916001016109e7565b50909695505050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112610a3f57600080fd5b813567ffffffffffffffff80821115610a5a57610a5a610a18565b604051601f8301601f19908116603f01168101908282118183101715610a8257610a82610a18565b81604052838152866020858801011115610a9b57600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060408385031215610ace57600080fd5b823567ffffffffffffffff80821115610ae657600080fd5b610af286838701610a2e565b93506020850135915080821115610b0857600080fd5b50610b1585828601610a2e565b9150509250929050565b600060208284031215610b3157600080fd5b5035919050565b600181811c90821680610b4c57607f821691505b60208210811415610b6d57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b600082821015610b9b57610b9b610b73565b500390565b6000816000190483118215151615610bba57610bba610b73565b500290565b634e487b7160e01b600052603260045260246000fd5b6000600019821415610be957610be9610b73565b506001019056fea26469706673582212208432d7e87afe613f642b70b14df0c52e7f1a22979f121ddbed0709f07d27004d64736f6c63430008090033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "paused()": {
+        "details": "Returns true if the contract is paused, and false otherwise."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 138,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 141,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "_initializing",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 693,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_array(t_uint256)50_storage"
+      },
+      {
+        "astId": 303,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "_paused",
+        "offset": 0,
+        "slot": "51",
+        "type": "t_bool"
+      },
+      {
+        "astId": 408,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "52",
+        "type": "t_array(t_uint256)49_storage"
+      },
+      {
+        "astId": 1908,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "medics",
+        "offset": 0,
+        "slot": "101",
+        "type": "t_mapping(t_address,t_struct(Medic)1899_storage)"
+      },
+      {
+        "astId": 1911,
+        "contract": "contracts/MedicsBook.sol:MedicsBook",
+        "label": "medicsList",
+        "offset": 0,
+        "slot": "102",
+        "type": "t_array(t_address)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_uint256)49_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[49]",
+        "numberOfBytes": "1568"
+      },
+      "t_array(t_uint256)50_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[50]",
+        "numberOfBytes": "1600"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_struct(Medic)1899_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct Medic)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Medic)1899_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Medic)1899_storage": {
+        "encoding": "inplace",
+        "label": "struct Medic",
+        "members": [
+          {
+            "astId": 1894,
+            "contract": "contracts/MedicsBook.sol:MedicsBook",
+            "label": "addr",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 1896,
+            "contract": "contracts/MedicsBook.sol:MedicsBook",
+            "label": "name",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1898,
+            "contract": "contracts/MedicsBook.sol:MedicsBook",
+            "label": "url",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}

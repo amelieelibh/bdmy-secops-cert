@@ -11,7 +11,9 @@
     "hardhat:start": "yarn hardhat node --watch",
     "deploy:rinkeby": "yarn hardhat --network rinkeby deploy",
     "console:local": "yarn hardhat console --network localhost",
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "verify:MedicsBook:rinkeby": "yarn hardhat verify --network rinkeby 0xcBc6d5aDa54B059cB2A8Aa40f0d8d4C4034a5012",
+    "verify:MedicineSupply:rinkeby": "yarn hardhat verify --network rinkeby 0x159c75cF20941826aEF7E58bAAAF1ae5e666eCB4 '0xcBc6d5aDa54B059cB2A8Aa40f0d8d4C4034a5012'"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",

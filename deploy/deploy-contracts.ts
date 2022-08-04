@@ -4,7 +4,7 @@ import { DeployFunction } from "hardhat-deploy/types";
 
 console.log("DeployFunction init");
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployments, getNamedAccounts, network, ethers } = hre;
+  const { deployments, getNamedAccounts, network, ethers, upgrades } = hre;
 
   console.log("getNamedAccounts");
   const { deployer } = await getNamedAccounts();
@@ -53,6 +53,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       gasLimit: 5500000,
       skipIfAlreadyDeployed: true,
     });
+    
+    // const MedicineSupplyFactory = await ethers.getContractFactory("MedicineSupply");
+    // const medicineSupply = await upgrades.deployProxy(MedicineSupplyFactory, [medicsBookAddr], {
+    //     initializer: "initializeMedicineSupply",
+    //     constructorArgs: [medicsBookAddr],
+    //     kind: "transparent",
+    // });
+    
     medicsBookAddr = resultDeploy.address;
     console.log("result deploy MedicineSupply", resultDeploy.address);
     const MedicineSupply = await ethers.getContractAt("MedicineSupply", resultDeploy.address);
