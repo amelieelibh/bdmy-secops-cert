@@ -17,7 +17,7 @@ struct Medic{
 struct Medicine{
     bytes32 sku;
     string name;
-    uint8 price;
+    uint16 price;
     uint16 quantity;
 }
 
@@ -80,7 +80,7 @@ contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable
     event MedicAdded(address indexed hospitalAddr, address indexed medicAddr, string name, string url);
     event MedicRemoved(address indexed hospitalAddr, address indexed medicAddr);
 
-    event NewMedicine(address indexed hospitalAddr, bytes32 indexed sku, string name, uint8 price);
+    event NewMedicine(address indexed hospitalAddr, bytes32 indexed sku, string name, uint16 price);
     event BoughtMedicine(address indexed hospitalAddr, bytes32 indexed sku, uint16 quantity);
     event SoldMedicine(address indexed hospitalAddr, bytes32 indexed sku, uint16 quantity);
     event EmptyMedicine(address indexed hospitalAddr, bytes32 indexed sku, string name);
@@ -154,7 +154,7 @@ contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable
     }
 
     
-    function registerMedicine(bytes32 sku, string memory name, uint8 price) public onlyHospital{
+    function registerMedicine(bytes32 sku, string memory name, uint16 price) public onlyHospital{
         require(hospitals[_msgSender()].addr == _msgSender(), "Hospital does not exists");
         require(medicines[_msgSender()][sku].sku != sku, "Medicine was already registered");
         medicines[_msgSender()][sku] = Medicine(sku, name, price, 0);
@@ -223,12 +223,15 @@ contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable
         ItemPrescription[] storage items = p.items;
         for(uint i = 0; i < items.length; i++){
             ItemPrescription storage item = items[i];
+            // console.log("item.quantity", item.quantity, medicines[p.hospital][item.sku].quantity);
             if(item.quantity == 0) {
                 emit EmptyMedicine(p.hospital, item.sku, medicines[p.hospital][item.sku].name);
             }
             require(item.quantity <= medicines[p.hospital][item.sku].quantity, "Not enough medicine at this moment");
         }
-        if(p.timestamp + 60 * 60 * 24 * 7 < block.timestamp) {
+        //30 days after
+        uint expiresOn = p.timestamp + 60 * 60 * 24 * 30;
+        if(expiresOn > block.timestamp) {
             p.filledStatus = 0x02;
         }else{
             p.filledStatus = 0x05;
@@ -253,6 +256,10 @@ contract MedicineSupply is Initializable, ERC721Upgradeable, PausableUpgradeable
         }
         prescriptions[prescriptionId].filledStatus = 0x03;
         emit PrescriptionFilled(hospitalAddr, prescriptionId);
+    }
+
+    function getItemsOfPrescription(uint prescriptionId) public view returns (ItemPrescription[] memory items){
+        items = prescriptions[prescriptionId].items;
     }
 
 }

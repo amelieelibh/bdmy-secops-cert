@@ -4,7 +4,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { MedicineSupply, MedicsBook } from "../typechain-types";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { BigNumber } from "ethers";
+import { BigNumber, BigNumberish } from "ethers";
 
 describe("MedicineSupply", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -29,7 +29,7 @@ describe("MedicineSupply", function () {
 
     // Contracts are deployed using the first signer/account by default
     const [owner, hospital1, hospital2, medic1, medic2, medic3, patient1, patient2, patient3, patient4] = await ethers.getSigners();
-
+    console.log("owner", owner.address);
     const MedicsBookFactory = await ethers.getContractFactory("MedicsBook");
     const medicsBook = await MedicsBookFactory.deploy() ;
 
@@ -398,12 +398,12 @@ describe("MedicineSupply", function () {
       const qty3 = 5;
       await medicineSupply.connect(hospital1).registerMedicine(sku1, medicine1, medicine1Price);
       await medicineSupply.connect(hospital1).registerMedicine(sku2, medicine2, medicine2Price);
-      // await medicineSupply.connect(hospital2).registerMedicine(sku2, medicine2, medicine2Price);
-      // await medicineSupply.connect(hospital2).registerMedicine(sku3, medicine3, medicine3Price);
       await medicineSupply.connect(hospital1).addMedicines([sku1, sku2], [qty1, qty2]);
-      // await medicineSupply.connect(hospital2).addMedicines([sku2, sku3], [qty2, qty3]);
+      await medicineSupply.connect(hospital2).registerMedicine(sku2, medicine2, medicine2Price);
+      await medicineSupply.connect(hospital2).registerMedicine(sku3, medicine3, medicine3Price);
+      await medicineSupply.connect(hospital2).addMedicines([sku2, sku3], [qty2, qty3]);
     });
-  
+    let prescriptionId: BigNumberish = 0;
     it("medic1 in hospital1 should be able to create a new prescription to patient1", async () => {
       const { medicineSupply, hospital1, medic1, patient1 } = fixture;
       const medicine1Name = "paracetamol";
@@ -419,7 +419,7 @@ describe("MedicineSupply", function () {
       expect(prescriptionResult.events?.[0].args?.hospitalAddr).to.be.equal(hospital1.address);
       expect(prescriptionResult.events?.[0].args?.medicAddr).to.be.equal(medic1.address);
       expect(prescriptionResult.events?.[0].args?.patientAddr).to.be.equal(patient1.address);
-      const prescriptionId = prescriptionResult.events?.[0].args?.prescriptionId;
+      prescriptionId = prescriptionResult.events?.[0].args?.prescriptionId;
       expect(prescriptionId).to.be.not.null;
 
       const prescriptionData = await medicineSupply.prescriptions(prescriptionId);
@@ -428,22 +428,92 @@ describe("MedicineSupply", function () {
       expect(prescriptionData.patient).to.be.equal(patient1.address);
       // expect(prescriptionData.).to.be.equal(sku);
       expect(prescriptionData.filledStatus).to.be.equal("0x01");
-      console.log("prescriptionData", prescriptionData);
+      // console.log("prescriptionData", prescriptionData);
+    });
+
+    it("patient1 must able to request medicines by prescriptionId from hospital1 given by medic1", async () => {
+      const { medicineSupply, hospital1, medic1, patient1 } = fixture;
+      const prescription = await medicineSupply.connect(patient1).prescriptions(prescriptionId);
+      // console.log("prescription", prescription);
+      expect(prescription.medic).to.be.equal(medic1.address);
+      expect(prescription.hospital).to.be.equal(hospital1.address);
+      expect(prescription.filledStatus).to.be.equal("0x01");
+
+      const requestResponse = await medicineSupply.connect(patient1).requestMedicines(prescriptionId);
+      const requestResult = await requestResponse.wait();
+
+      const updatedPrescription = await medicineSupply.connect(patient1).prescriptions(prescriptionId);
+      expect(updatedPrescription.filledStatus).to.be.equal("0x02");
+
+      const fillPrescriptionResponse = await medicineSupply.connect(hospital1).fillPrescription(prescriptionId);
+      const fillPrescriptionResult = await fillPrescriptionResponse.wait();
+      // console.log("fillPrescriptionResult", fillPrescriptionResult);
+      const itemsOfPrescription = await medicineSupply.getItemsOfPrescription(prescriptionId);
+      // console.log("itemsOfPrescription", itemsOfPrescription);
+      expect(fillPrescriptionResult.events?.[0].event).to.be.equal("SoldMedicine");
+      expect(fillPrescriptionResult.events?.[0].args?.sku).to.be.equal(itemsOfPrescription[0].sku);
+      expect(fillPrescriptionResult.events?.[1].event).to.be.equal("SoldMedicine");
+      expect(fillPrescriptionResult.events?.[1].args?.sku).to.be.equal(itemsOfPrescription[1].sku);
+      expect(fillPrescriptionResult.events?.[2].event).to.be.equal("PrescriptionFilled");
+      expect(fillPrescriptionResult.events?.[2].args?.hospitalAddr).to.be.equal(hospital1.address);
+      expect(fillPrescriptionResult.events?.[2].args?.prescriptionId).to.be.equal(prescriptionId);
     });
   
+    it("medic2 in hospital2 should be able to create a new prescription to patient2 but then the prescription expires", async () => {
+      const { medicineSupply, hospital2, medic2, patient2 } = fixture;
+      const medicine1Name = "ibuprofeno";
+      const sku1 = ethers.utils.formatBytes32String(medicine1Name);
+      const qty1 = 4;
+      const medicine2Name = "omeprazol";
+      const sku2 = ethers.utils.formatBytes32String(medicine2Name);
+      const qty2 = 5;
+      const prescription = await medicineSupply.connect(medic2).createPrescription(
+        hospital2.address, patient2.address, [sku1, sku2], [qty1, qty2]);
+      const prescriptionResult = await prescription.wait();
+      prescriptionId = prescriptionResult.events?.[0].args?.prescriptionId;
+      expect(prescriptionId).to.be.not.null;
+      
+      await time.increaseTo((await ethers.provider.getBlock(prescriptionResult.blockNumber)).timestamp + 60 * 60 * 24 * 31);
+      
+      const requestResponse = await medicineSupply.connect(patient2).requestMedicines(prescriptionId);
+      const requestResult = await requestResponse.wait();
+      
+      expect(requestResult.events?.[0].event).to.be.equal("ExpiredPrescription");
+      expect(requestResult.events?.[0].args?.hospitalAddr).to.be.equal(hospital2.address);
+      expect(requestResult.events?.[0].args?.prescriptionId).to.be.equal(prescriptionId);
+      
+      const prescriptionData = await medicineSupply.prescriptions(prescriptionId);
+      expect(prescriptionData.filledStatus).to.be.equal("0x05");
+    });
+
+    it("medic2 in hospital2 should be able to create a new prescription with ibuprofeno but then is empty and cannot request it", async () => {
+      const { medicineSupply, hospital2, medic2, patient2 } = fixture;
+      const medicine1Name = "ibuprofeno";
+      const sku1 = ethers.utils.formatBytes32String(medicine1Name);
+      const qty1 = 6;
+
+      const prescription = await medicineSupply.connect(medic2).createPrescription(
+        hospital2.address, patient2.address, [sku1], [qty1]);
+      const prescriptionResult = await prescription.wait();
+      const prescriptionId = prescriptionResult.events?.[0].args?.prescriptionId;
+      expect(prescriptionId).to.be.not.null;
+
+      let err: any;
+      try{
+        const requestResponse = await medicineSupply.connect(patient2).requestMedicines(prescriptionId);
+        const requestResult = await requestResponse.wait();
+        console.log("requestResult", requestResult);
+        // expect(requestResult.events?.[0].event).to.be.equal("EmptyPrescription");
+        // expect(requestResult.events?.[0].args?.hospitalAddr).to.be.equal(hospital2.address);
+        // expect(requestResult.events?.[0].args?.sku).to.be.equal(sku1);
+        // expect(requestResult.events?.[0].args?.name).to.be.equal(medicine1Name);
+      }catch(e: any){
+        err = e;
+        // console.log("err", err);
+      }
+      expect(err).to.be.not.undefined;
+      expect(err.message).to.contains("Not enough medicine at this moment");
+
+    });
   });
-  //   describe("Transfers", function () {
-  //     it("Should transfer the funds to the owner", async function () {
-  //       const { lock, unlockTime, lockedAmount, owner } = await loadFixture(
-  //         deployOneYearLockFixture
-  //       );
-
-  //       await time.increaseTo(unlockTime);
-
-  //       await expect(lock.withdraw()).to.changeEtherBalances(
-  //         [owner, lock],
-  //         [lockedAmount, -lockedAmount]
-  //       );
-  //     });
-  //   });
 });

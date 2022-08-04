@@ -34,6 +34,7 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545"
     },
     rinkeby: {
+      chainId: 4,
       url: `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
       accounts: { mnemonic: process.env.MNEMONIC } as HttpNetworkAccountsUserConfig
     },
